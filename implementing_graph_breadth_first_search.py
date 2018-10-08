@@ -12,7 +12,7 @@ from collections import deque
 
 def search(name):
     search_queue = deque() # Creates a new queue
-    search_queue += graph["you"]
+    search_queue += graph[name]
     searched = [] # This array is how you keep track of which people you've searched before
     while search_queue: # Whle the queue is not empty
         person = search_queue.popleft() # ... grabs the first person off the queue
