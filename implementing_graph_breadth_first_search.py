@@ -16,12 +16,13 @@ def search(name):
     searched = [] # This array is how you keep track of which people you've searched before
     while search_queue: # Whle the queue is not empty
         person = search_queue.popleft() # ... grabs the first person off the queue
-        if person_is_seller(person):
-            print person + " is a mango seller!"
-            return True
-        else:
-            search_queue += graph[person] # No, they're not. Add all of this person's friends to the search queue
-            searched.append(person) # Marks this person as searched
+        if not person in searched: # only search this person if you haven't already searched them
+            if person_is_seller(person):
+                print person + " is a mango seller!"
+                return True
+            else:
+                search_queue += graph[person] # No, they're not. Add all of this person's friends to the search queue
+                searched.append(person) # Marks this person as searched
     return False
 
 def person_is_seller(name):
